@@ -26,7 +26,7 @@ jobs:
         run: dart analyze
 
       - name: build docker image
-        run: docker build -t cicd-server
+        run: docker build . --file Dockerfile --tag cicd-server:latest
               
       - name: Login to Docker Hub
         uses: docker/login-action@v3
