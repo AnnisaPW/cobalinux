@@ -30,8 +30,15 @@ jobs:
 
       - name: build docker image
         run: docker build -t cicd-server
-
-      - name: running with docker
-        run: docker run -it -p 8080:8080 myserver
               
-        
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ putriannisa }}
+          password: ${{ chaca020603 }}
+          
+      - name: docker tag
+        run: docker tag cicd-server:latest putriannisa/cicd-repo:latest
+
+      - name: docker push
+        run: docker push putriannisa/cicd-repo:latest
