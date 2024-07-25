@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
@@ -10,7 +11,12 @@ final _router = Router()
   ..get('/echo/<message>', _echoHandler);
 
 Response _rootHandler(Request req) {
-  return Response.ok('Hello, my name is Annisa!\n');
+  // final x = req.url.port.;
+  log('hehehehe');
+  log(req.requestedUri.origin);
+  log(req.requestedUri.origin);
+  final link = req.requestedUri.origin;
+  return Response.ok('Hello, my name is Annisa!\n$link');
 }
 
 Response _echoHandler(Request request) {
